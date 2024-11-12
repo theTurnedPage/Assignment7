@@ -29,11 +29,11 @@ class CustomArrayListTest<T> {
   			sut.should_add_items_to_list(i);
 		}		
 									
- 		sut.should_move_items_towards_right_upon_add(5, 1);
+ 		sut.should_move_items_towards_right_upon_add(5, 99);
 		int actualResult = sut.should_get_size_of_list();
 		
 		System.out.println("Number at Index 6:" + sut.should_get_item_at_index_from_list(6));
-		//should_remove_item_from_list_then_push_items_left(6);			
+		should_remove_item_from_list_then_push_items_left(6);			
 				
 		//Assert		
 		assertEquals(20, actualResult);		
@@ -95,8 +95,8 @@ class CustomArrayListTest<T> {
             	items[i] = items[i + 1];            	
             }
             //remove last element
-            //items[size - 1] = null;
-            //size--;
+            items[size - 1] = null;
+            size--;
         }               							
 		
 		return (T) items[index];
