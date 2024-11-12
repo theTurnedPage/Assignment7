@@ -24,21 +24,18 @@ class CustomArrayListTest<T> {
 		CustomArrayListTest<Integer> sut = new CustomArrayListTest<>();
 		//using public instead
 		
-		//Act
+		//Act  
 		for (int i = 0; i < 20; i++) {
-			sut.should_add_items_to_list(i);
+  			sut.should_add_items_to_list(i);
 		}		
 									
-		sut.should_move_items_towards_right_upon_add(5, 1);
+ 		sut.should_move_items_towards_right_upon_add(5, 1);
 		int actualResult = sut.should_get_size_of_list();
 		
-		//System.out.println(should_get_item_at_index_from_list(6));
-		//should_remove_item_from_list_then_push_items_left(6);
-		System.out.println(size);
-		System.out.println(actualResult);
+		System.out.println("Number at Index 6:" + sut.should_get_item_at_index_from_list(6));
+		//should_remove_item_from_list_then_push_items_left(6);			
 				
-		//Assert
-		assertEquals(20, size);
+		//Assert		
 		assertEquals(20, actualResult);		
 	}
 	
@@ -72,7 +69,10 @@ class CustomArrayListTest<T> {
 	@Test
 	boolean should_move_items_towards_right_upon_add(int index, T item) throws IndexOutOfBoundsException{
 			
-        if (index < 0 || index > size) {
+		 //increase size of array to avoid IndexOutOfBoundsException if possible
+		should_start_back_size();
+		
+		if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);
         } else {
         	
