@@ -1,6 +1,9 @@
 package com.coderscampus.assignment7;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import com.coderscampus.assignment7.CustomArrayList;
 import com.coderscampus.assignment7.CustomList;
@@ -25,7 +28,7 @@ class CustomArrayListTest<T> {
 		//using public instead
 		
 		//Act  
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 40; i++) {
   			sut.should_add_items_to_list(i);
 		}		
 									
@@ -37,7 +40,7 @@ class CustomArrayListTest<T> {
 		int actualResult = sut.should_get_size_of_list();
 				
 		//Assert		
-		assertEquals(19, actualResult);		
+		assertEquals(39, actualResult);		
 	}
 	
 	@Test
@@ -54,10 +57,7 @@ class CustomArrayListTest<T> {
 	}	
 	
 	@Test
-	boolean should_add_items_to_list(T item) {
-				
-		//initially false
-		boolean actualResult = false; 		
+	boolean should_add_items_to_list(T item) {					
 		
 		should_start_back_size();
 		items[size++] = item; //insert element into Object array, increment the size variable					
@@ -101,36 +101,36 @@ class CustomArrayListTest<T> {
 		return (T) items[index];
 	}		
 	
-	@Test
-	private Object[] should_back_size_of_array(Object[] someArray) {
-		
-		//create new collection with double the size as the last
-		Object[] doubledArray = new Object[someArray.length * 2];
-		//copy elements from previous collection to new collection
-		System.out.println(doubledArray.length);
-		
-		//catch the null value at the start, use it to populate the list initially
-		if (doubledArray[0] == null) {
-			for (int i = 0; i < someArray.length; i++) {
-				doubledArray[i] = someArray[i];
-			}
-		} else { //once initial nulls are changed above, continue to populate
-			for (int i = someArray.length-1; i < doubledArray.length; i++) {
-				doubledArray[i] = someArray[i];
-			}
-		}
-			
-		//send newly copied collection			
-		return doubledArray;				
-	}
+//	@Test
+////	private Object[] should_back_size_of_array(Object[] someArray) {
+////		
+////		//create new collection with double the size as the last
+////		Object[] doubledArray = new Object[someArray.length * 2];
+////		//copy elements from previous collection to new collection
+////		System.out.println(doubledArray.length);
+////		
+////		//catch the null value at the start, use it to populate the list initially
+////		if (doubledArray[0] == null) {
+////			for (int i = 0; i < someArray.length; i++) {
+////				doubledArray[i] = someArray[i];
+////			}
+////		} else { //once initial nulls are changed above, continue to populate
+////			for (int i = someArray.length-1; i < doubledArray.length; i++) {
+////				doubledArray[i] = someArray[i];
+////			}
+////		}
+////			
+////		//send newly copied collection			
+////		return doubledArray;				
+////	}
 	
 	@Test
 	private void should_start_back_size() {
 		
 		if (size == items.length) {
 			//double size of array
-			//items = Arrays.copyOf(items, items.length * 2);
-			items = should_back_size_of_array(items);
+			items = Arrays.copyOf(items, items.length * 2); //Using this instead per assignment 5 review
+			//items = should_back_size_of_array(items);
 			System.out.println("\n***Increase size of array***\n" + "\n New Size: " + items.length + "\n");
 		} else {
 			System.out.println("No need to increase size of Array yet");
