@@ -30,13 +30,14 @@ class CustomArrayListTest<T> {
 		}		
 									
  		sut.should_move_items_towards_right_upon_add(5, 99);
-		int actualResult = sut.should_get_size_of_list();
 		
-		System.out.println("Number at Index 6:" + sut.should_get_item_at_index_from_list(6));
-		should_remove_item_from_list_then_push_items_left(6);			
+		
+		System.out.println("Number at Index 5:" + sut.should_get_item_at_index_from_list(5));
+		sut.should_remove_item_from_list_then_push_items_left(1);
+		int actualResult = sut.should_get_size_of_list();
 				
 		//Assert		
-		assertEquals(20, actualResult);		
+		assertEquals(19, actualResult);		
 	}
 	
 	@Test
@@ -59,11 +60,8 @@ class CustomArrayListTest<T> {
 		boolean actualResult = false; 		
 		
 		should_start_back_size();
-		items[size++] = item; //insert element into Object array, increment the size variable
-		actualResult = true; //set to true after item is added
-
-		assertEquals(true, actualResult);		
-		return actualResult;
+		items[size++] = item; //insert element into Object array, increment the size variable					
+		return true;
 	}
 	
 	@Test
@@ -79,19 +77,20 @@ class CustomArrayListTest<T> {
             for (int i = size; i > index; i--) {
             	items[i] = items[i - 1];            	
             }
+            items[index] = item;//after moving other elements, insert
         }               
 		
-		return false;			
+		return true;			
 	}
 	
 	@Test
-	public T should_remove_item_from_list_then_push_items_left(int index) throws IndexOutOfBoundsException {
+	private T should_remove_item_from_list_then_push_items_left(int index) throws IndexOutOfBoundsException {
 		
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);
         } else {
         	
-            for (int i = index; i < size; i++) {
+            for (int i = index; i < size - 1; i++) {
             	items[i] = items[i + 1];            	
             }
             //remove last element
