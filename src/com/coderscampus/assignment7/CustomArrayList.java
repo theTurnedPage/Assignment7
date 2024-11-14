@@ -58,9 +58,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	            }
 	            items[size - 1] = null;
 	            size--;
-	        }               							
-			
-			//return (T) items[index];
+	        }               										
 			return removedInt;
 		}
 		
