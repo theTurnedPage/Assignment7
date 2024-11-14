@@ -48,6 +48,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		@Override
 		public T remove(int index) throws IndexOutOfBoundsException {
 			
+			T removedInt = (T) items[index];
 	        if (index < 0 || index > size) {
 	            throw new IndexOutOfBoundsException("Invalid index: " + index);
 	        } else {
@@ -59,7 +60,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	            size--;
 	        }               							
 			
-			return (T) items[index];
+			//return (T) items[index];
+			return removedInt;
 		}
 		
 		private void ensureCapacity() { 
