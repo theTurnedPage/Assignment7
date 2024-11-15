@@ -27,8 +27,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	            	items[i] = items[i - 1];            	
 	            }
 	            items[index] = item;
-	        }               
-			
+	        }            
+			size++;	//increment!!! lol	
 			return true;	
 		}		
 
@@ -49,7 +49,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		public T remove(int index) throws IndexOutOfBoundsException {
 			
 			T removedInt = (T) items[index];
-	        if (index < 0 || index > size) {
+	        if (index < 0 || index > size - 1) {
 	            throw new IndexOutOfBoundsException("Invalid index: " + index);
 	        } else {
 	        	

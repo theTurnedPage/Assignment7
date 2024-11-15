@@ -37,7 +37,7 @@ class CustomArrayListTest<T> {
 		sut.add(5, 99);
 		//assert
 		assertEquals(99, sut.get(5));
-		assertEquals(40, sut.getSize());		
+		assertEquals(41, sut.getSize());					
 	}	
 	
 	@Test
